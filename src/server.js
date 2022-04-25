@@ -1,6 +1,6 @@
 
 require('dotenv').config({
-    path: 'env'
+    path: '.env'
 });
 
 const express = require('express');
@@ -31,6 +31,13 @@ app.use((req, res, next) => {
     next();
 });
 
+app.get('/', (req, res) => {
+    res.send({
+        status: 'ok',
+        message: 'Rodando'
+    });
+});
+
 app.use((req, res, next) => {
     const erro = new Error('Não encontrado')
     erro.status = 404;
@@ -41,11 +48,11 @@ app.use((error, req, res, next) => {
     res.status(error.status || 500);
     return res.json({
         erro: error.message
-    })
-})
+    });
+});
 
 app.listen(port, hostname, () => {
     console.log(`Servidor rodando no endereço ${hostname}:${port}`)
-})
+});
 
 
