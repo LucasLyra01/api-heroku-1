@@ -33,7 +33,6 @@ app.use((req, res, next) => {
 
     next();
 });
-
 // app.use('/api', pingRouter);
 
 app.get('/', async (req, res) => {
