@@ -8,6 +8,8 @@ const cors = require('cors');
 const mongo = require('./mongo/mongo');
 const app = express();
 
+const pingRouter = require('./routes/index');
+
 const port = process.env.PORT;
 const hostname = process.env.HOSTNAME;
 
@@ -32,8 +34,10 @@ app.use((req, res, next) => {
     next();
 });
 
-app.get('/', (req, res) => {
-    res.send({
+app.use('/api', pingRouter);
+
+app.get('/', async (req, res) => {
+    await res.send({
         status: 'ok',
         message: 'Rodando'
     });
