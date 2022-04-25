@@ -5,7 +5,7 @@ require('dotenv').config({
 
 const express = require('express');
 const cors = require('cors');
-const mongo = require('./mongo/mongo');
+// const mongo = require('./mongo/mongo');
 const app = express();
 
 const pingRouter = require('./routes/index');
